@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BiciShop - Tu tienda de bicicletas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container brand">
+      <div class="logo">BS</div>
+      <div class="brand-text">
+        <h1>BiciShop - Tu tienda de bicicletas</h1>
+        <div class="small">Proyecto para portafolio • JavaScript puro • LocalStorage</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Catálogo de bicicletas</h2>
+      <div class="filters">
+        <input type="text" id="search" placeholder="Buscar bicicleta...">
+        <select id="categoryFilter">
+          <option value="">Todas las categorías</option>
+          <option value="Ruta">Ruta</option>
+          <option value="Montaña">Montaña</option>
+          <option value="Urbana">Urbana</option>
+          <option value="BMX">BMX</option>
+        </select>
+        <select id="sort">
+          <option value="">Ordenar por</option>
+          <option value="asc">Precio: menor a mayor</option>
+          <option value="desc">Precio: mayor a menor</option>
+        </select>
+        <input type="number" id="minPrice" placeholder="Precio mínimo" min="0">
+        <input type="number" id="maxPrice" placeholder="Precio máximo" min="0">
+      </div>
+      <div id="products" class="grid"></div>
+    </section>
+  </main>
+
+  <button class="btn cart-btn" id="openCart">
+    <i class="fas fa-shopping-cart"></i> Carrito (<span id="cartCount">0</span>)
+  </button>
+
+  <div id="overlay" class="overlay"></div>
+
+  <aside id="cartDrawer" class="drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <h2>Tu carrito de compras</h2>
+      <button id="closeCart" class="btn ghost"><i class="fas fa-times"></i></button>
+    </div>
+    
+    <div id="cartList"></div>
+    <div id="emptyMsg" class="empty-cart">
+      <i class="fas fa-shopping-cart"></i>
+      <p>El carrito está vacío. Añade bicicletas desde el catálogo.</p>
+    </div>
+
+    <div class="checkout">
+      <div class="checkout-line">
+        <span>Subtotal:</span>
+        <strong id="subtotal">$0</strong>
+      </div>
+      <div class="checkout-line">
+        <span>IVA (19%):</span>
+        <strong id="tax">$0</strong>
+      </div>
+      <div class="checkout-line checkout-total">
+        <span>Total:</span>
+        <strong id="total">$0</strong>
+      </div>
+      
+      <div class="checkout-buttons">
+        <button id="clearCart" class="btn ghost">Vaciar carrito</button>
+        <button id="checkoutBtn" class="btn">Finalizar compra</button>
+      </div>
+    </div>
+
+    <div id="checkoutForm" style="display:none">
+      <h3>Finalizar compra</h3>
+      <form id="form">
+        <div class="form-group">
+          <label for="name">Nombre completo</label>
+          <input type="text" id="name" placeholder="Ingresa tu nombre completo" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" placeholder="Ingresa tu correo electrónico" required>
+        </div>
+        <div class="form-group">
+          <label for="address">Dirección de envío</label>
+          <input type="text" id="address" placeholder="Ingresa tu dirección" required>
+        </div>
+        <button type="submit" class="btn">Confirmar compra</button>
+      </form>
+    </div>
+  </aside>
+
+  <div class="notification" id="notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="notificationText">Producto añadido al carrito</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
